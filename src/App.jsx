@@ -8,17 +8,32 @@ import {
 //Routes
 import Dashboard, { dashboardLoader } from './pages/Dashboard';
 import Error from './pages/Error';
+import Main, { mainLoader } from './layouts/Main';
+
+//components
+import Nav from './components/Nav';
+
+//actions
+import { logoutAction } from './actions/logout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Dashboard />,
-    loader: dashboardLoader,
-    errorElement: <Error />
-  },
-  {
-    path: '/*',
-    element: <Error />
+    element: <Main />,
+    loader: mainLoader,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+        loader: dashboardLoader,
+        errorElement: <Error />
+      },
+      {
+        path: 'logout',
+        action: logoutAction
+      }
+    ]
   }
 ]);
 
