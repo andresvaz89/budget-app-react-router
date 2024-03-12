@@ -10,6 +10,10 @@ import Dashboard, { dashboardLoader } from './pages/Dashboard';
 import Error from './pages/Error';
 import Main, { mainLoader } from './layouts/Main';
 
+// libraries
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 //components
 import Nav from './components/Nav';
 
@@ -41,6 +45,8 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router} />
+
+      <ToastContainer />
     </div>
   );
 }
